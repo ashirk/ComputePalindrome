@@ -11,7 +11,7 @@ public class XmlHandler extends DefaultHandler {
 	
 	private String qName;
 	private boolean read = false;
-	private Map<String, String> inputData = new TreeMap<String, String>();
+	private Map<Integer, String> inputData = new TreeMap<Integer, String>();
 	
 	public void startElement(String uri, String localName, String qName, 
 			Attributes attributes) throws SAXException {
@@ -22,7 +22,8 @@ public class XmlHandler extends DefaultHandler {
 	public void characters(char[] ch, int start, int length) throws SAXException {
 		if (qName.contains("data") && !qName.contains("set") && read) {
 			String val = removeNonWordCharacters(new String(ch, start, length));
-			inputData.put(qName, val.toUpperCase());
+			Integer index = Integer.valueOf(qName.replace("data", ""));
+			inputData.put(index, val.toUpperCase());
 			read = false;
 		}
 	}
@@ -31,7 +32,7 @@ public class XmlHandler extends DefaultHandler {
 		return input.replaceAll("\\W", "");
 	}
 
-	public Map<String, String> getInputData() {
+	public Map<Integer, String> getInputData() {
 		return inputData;
 	}
 	

@@ -10,7 +10,7 @@ import javax.xml.parsers.SAXParserFactory;
 public class ComputePalindrome {
 	
 	InputStream is = null;
-	static Map<String, String> inputData = null;
+	static Map<Integer, String> inputData = null;
 	static Map<String, Boolean> outputData = null;
 	
 	
@@ -56,11 +56,11 @@ public class ComputePalindrome {
 	private void compute() {
 		Map<String, Boolean> results = new TreeMap<String, Boolean>();
 		
-		for (Map.Entry<String, String> entry : inputData.entrySet()) {
-			String key = entry.getKey();
+		for (Map.Entry<Integer, String> entry : inputData.entrySet()) {
+			Integer key = entry.getKey();
 			String value = entry.getValue();
 			
-			String newKey = "answer" + key.replace("data", "");
+			String newKey = "answer" + key.toString();
 			boolean isPal = PalindromeTester.isPalindrome(value);	
 			results.put(newKey, isPal);
 		}

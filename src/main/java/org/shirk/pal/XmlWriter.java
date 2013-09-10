@@ -12,8 +12,6 @@ import javax.xml.transform.stream.StreamResult;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-
-
 public class XmlWriter {
 	
 	public void writeXml(Map<String, Boolean> outputData) {
